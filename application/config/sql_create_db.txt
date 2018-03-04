@@ -1,2 +1,1 @@
-DROP DATABASE `item_finder`
 CREATE DATABASE item_finder;
