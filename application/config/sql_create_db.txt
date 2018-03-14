@@ -1,1 +1,84 @@
 CREATE DATABASE item_finder;
+use item_finder;
+
+CREATE TABLE Households (
+	householdId int NOT NULL AUTO_INCREMENT,
+	householdPassword varchar(20),
+	householdName varchar(20),
+	PRIMARY KEY (householdId)
+);
+CREATE TABLE UserTypes (
+	typeId int NOT NULL AUTO_INCREMENT,
+	typeName varchar(20),
+	PRIMARY KEY (typeId)
+);
+CREATE TABLE AccessTypes (
+	accessTypeId int NOT NULL AUTO_INCREMENT,
+	accessName varchar(50),
+	PRIMARY KEY (accessTypeId)
+);
+CREATE TABLE Users (
+	userId int NOT NULL AUTO_INCREMENT,
+	password varchar(50),
+	name varchar(50),
+	accountType int(1),
+	householdId int(10),
+	PRIMARY KEY(userId),
+	FOREIGN KEY (accountType) REFERENCES UserTypes(typeId),
+	FOREIGN KEY (householdId) REFERENCES Households(householdId)
+);
+CREATE TABLE Rooms (
+	roomId int NOT NULL AUTO_INCREMENT,
+	roomName varchar(20),
+	roomDesc varchar(50),
+	householdId int(10),
+	PRIMARY KEY(roomId),
+	FOREIGN KEY (householdId) REFERENCES Households(householdId)
+);
+CREATE TABLE StoragePlaces (
+	storagePlaceId int NOT NULL AUTO_INCREMENT,
+	storagePlaceName varchar(20),
+	storagePlaceDesc varchar(50),
+	roomId int(10),
+	PRIMARY KEY(storagePlaceId),
+	FOREIGN KEY (roomId) REFERENCES Rooms(roomId)
+);
+CREATE TABLE Items (
+	itemId int NOT NULL AUTO_INCREMENT,
+	itemName varchar(20),
+	itemDesc varchar(50),
+	storagePlaceId int(10),
+	accessType int(10),
+	lastUpdated datetime,
+	lastUpdatedBy int(10),
+	PRIMARY KEY(itemId),
+	FOREIGN KEY (storagePlaceId) REFERENCES StoragePlaces(storagePlaceId),
+	FOREIGN KEY (accessType) REFERENCES AccessTypes(accessTypeId),
+	FOREIGN KEY (lastUpdatedBy) REFERENCES Users(userId)
+);
+
+INSERT INTO `item_finder`.`UserTypes` (`typeName`) VALUES ('Admin');
+INSERT INTO `item_finder`.`UserTypes` (`typeName`) VALUES ('Household Admin');
+INSERT INTO `item_finder`.`UserTypes` (`typeName`) VALUES ('Household Member');
+INSERT INTO `item_finder`.`UserTypes` (`typeName`) VALUES ('Household Guest');
+INSERT INTO `item_finder`.`UserTypes` (`typeName`) VALUES ('Non-Household User');
+
+INSERT INTO `item_finder`.`AccessTypes` (`accessName`) VALUES ('Everyone associated with the household');
+INSERT INTO `item_finder`.`AccessTypes` (`accessName`) VALUES ('Household members only');
+INSERT INTO `item_finder`.`AccessTypes` (`accessName`) VALUES ('Household admins only');
+
+INSERT INTO `item_finder`.`Households` (`householdName`) VALUES ('Household 1');
+INSERT INTO `item_finder`.`Households` (`householdName`) VALUES ('Household 2');
+
+INSERT INTO `item_finder`.`Users` (`password`,`name`,`accountType`) VALUES ('pw1','User 1',1);
+INSERT INTO `item_finder`.`Users` (`password`,`name`,`accountType`,`householdId`) VALUES ('pw2','User 2',2,1);
+INSERT INTO `item_finder`.`Users` (`password`,`name`,`accountType`,`householdId`) VALUES ('pw3','User 3',3,1);
+INSERT INTO `item_finder`.`Users` (`password`,`name`,`accountType`,`householdId`) VALUES ('pw4','User 4',4,1);
+INSERT INTO `item_finder`.`Users` (`password`,`name`,`accountType`,`householdId`) VALUES ('pw5','User 5',2,2);
+INSERT INTO `item_finder`.`Users` (`password`,`name`,`accountType`) VALUES ('pw6','User 6',5);
+
+INSERT INTO `item_finder`.`Rooms` (`roomName`,`householdId`) VALUES ('Room 1',1);
+INSERT INTO `item_finder`.`StoragePlaces` (`storagePlaceName`,`roomId`) VALUES ('Storage Place 1',1);
+INSERT INTO `item_finder`.`Items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 1',1,1);
+INSERT INTO `item_finder`.`Items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 2',1,2);
+INSERT INTO `item_finder`.`Items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 3',1,3);
