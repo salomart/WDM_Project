@@ -1,0 +1,91 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		dashboard
+	</title>
+</head>
+<body>
+	<link rel= "stylesheet" type = "text/css" href= "findstuff.css">
+	<div class = "wrapper">
+		
+		<div class= "column left">
+		<img src="images/home.png" >
+		<nav id=leftn >
+			<a href = "#">Home</a>
+			<a href = "Settings.html">Settings</a>
+			<a href = "#">About us</a>
+		</nav>
+		</div>
+		<div class = "column right">
+			<header id= "strip">
+				<h1>Find Stuff</h1>
+				<nav>
+					<a href = "#">Logout</a>
+				</nav>
+			</header>
+			<div class="article">
+			<h4 style="padding-left: 10px;">Filter:</h4>
+			<select id="filter" name ="sort" style="display: inline;"> 
+				<option value="category">Sort by category</option>
+				<option value="type">Sort by type</option>
+			</select>
+			<label style = "padding-left: 10px"><span>User: </span></label><input style="border: 0;" type="text" value="admin" />
+			</div>
+			<div class="page">
+				<p>This page displays the items that are present in your household. Please move your mouse over the image to know the details of the item. </p>
+			</div>
+			<table id ="imaget">
+				<tr>
+					<td>
+						<div class="container">
+						<img src="images/scissors.jpg" class= "image">
+						<div class="overlay">
+							<div class="text"> 
+								Last used:Dhirish
+								location: kitchen
+							</div>
+						</div>
+						</div>
+					</td>
+					<td>
+						<div class="container">
+						<img src="images/cell.jpg" class="image">
+						<div class="overlay">
+							<div class="text"> 
+								Last used:Dhirish
+								location: table
+							</div>
+						</div>
+						</div>
+					</td>
+					<td>
+						<div class="container">
+						<img src="images/bottle.jpg" class="image">
+						<div class="overlay">
+							<div class="text"> 
+								Last used:Dhirish
+								location: kitchen
+							</div>
+						</div>
+						</div>
+					</td>
+				</tr>	
+				<tr>
+					<td>
+						<div class="container">
+						<img src="images/pen.jpg" class="image">
+						<div class="overlay">
+							<div class="text"> 
+								Last used:Dhirish
+								location: kitchen
+							</div>
+						</div>
+						</div>
+					</td>	
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

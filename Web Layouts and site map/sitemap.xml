@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gloomaps scheme="1.0">
+  <link>https://www.gloomaps.com/oYiWs7AW4s</link>
+  <pubdate>03/19/2018</pubdate>
+  <section>
+    <box>
+      <text>Find Stuff</text>
+      <propa>#ffffff</propa>
+      <propb>#000000</propb>
+      <member>
+        <box>
+          <text>Home</text>
+          <member/>
+        </box>
+        <box>
+          <text>About Us</text>
+          <member/>
+        </box>
+        <box>
+          <text>Login</text>
+          <member>
+            <box>
+              <text>Dashboard</text>
+              <member>
+                <box>
+                  <text>Descriptions</text>
+                  <member/>
+                </box>
+                <box>
+                  <text>settings</text>
+                  <member/>
+                </box>
+              </member>
+            </box>
+          </member>
+        </box>
+        <box>
+          <text>Register</text>
+          <propa>#ffffff</propa>
+          <propb>#000000</propb>
+          <propc>Lato</propc>
+          <propd>100%</propd>
+          <member>
+            <box>
+              <text>Details</text>
+              <member/>
+            </box>
+          </member>
+        </box>
+      </member>
+    </box>
+  </section>
+</gloomaps>

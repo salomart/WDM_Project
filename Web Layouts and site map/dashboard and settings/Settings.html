@@ -1,0 +1,70 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		dashboard
+	</title>
+</head>
+<body>
+	<script>
+		function addUser(){
+			var x=document.getElementById("form"); 
+			var y = document.getElementById("myDIV1");
+       		x.style.display = "none";       		
+       		y.style.display= "block";
+    		
+			/* document.getElementById("addUser").innerHTML='<object type="text/html" data="Dashboard.html" ></object>';*/	
+		}
+	</script>
+	<link rel= "stylesheet" type = "text/css" href= "findstuff.css">
+	<div class = "wrapper">
+
+		<div class= "column left">
+			<img src="images/home.png">
+			<nav id=leftn>
+				<a href = "Dashboard.html">Home</a>
+				<a href = "#">Settings</a>
+				<a href = "#">About us</a>
+			</nav>
+		</div>
+		<div class = "column right">
+			<header id= "strip">
+				<h1>Find Stuff</h1>
+				<nav>
+					<a href = "#">Logout</a>
+				</nav>
+			</header>
+			<div id="form">
+				<p>This page displays the profile details of the user. You can update the info of the user if you wish. </p>
+				<h2>User info</h2>
+				<hr>
+				<form  id= "Uform" method="get" action="submit.php">
+					<label><span>*Name: </span></label><input type="text" value="Dhirish" />
+					<label><span>*E-Mail: </span></label><input type="text" value="dhirish07@gmail.com" />
+					<label><span>*Address:</span></label><textarea rows="4" cols="10" wrap= "hard">603,Hiett avenue,#12</textarea> 
+					<label><span>*Dob: </span></label><input type="text" value="07/15/1994" />
+					<label><span>*Contact: </span></label><input type="text" value="949494949494" />
+					<label ><input id="submit" type="submit" value="Apply Now"></label>
+
+				</form>	
+				<button id="addUser" onclick="addUser()">addUser</button>
+			</div>
+			<div id="myDIV1" style="display: none">
+				<p>This page displays the profile details of the user. You can update the info of the user if you wish. </p>
+				<h2>User info</h2>
+				<hr>
+				<form  id= "Uform" method="get" action="add.php">
+					<label><span>*Name: </span></label><input type="text" value="" />
+					<label><span>*E-Mail: </span></label><input type="text" value="" />
+					<label><span>*Address:</span></label><textarea rows="4" cols="10" wrap= "hard"></textarea> 
+					<label><span>*Dob: </span></label><input type="text" value="" />
+					<label><span>*Contact: </span></label><input type="text" value="" />
+					<label ><input id="submit" type="submit" value="Add User"></label>
+
+				</form>	
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

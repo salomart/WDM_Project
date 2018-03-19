@@ -1,0 +1,167 @@
+body{
+	background: url("images/background.jpg");
+}
+.wrapper{
+	margin:auto;
+	width: 100%;
+}
+#strip{
+	margin-top: -21px;
+	background-color : #00141a;
+	text-align : left;	
+	color: #FCEBB6;
+}
+.left img{
+	width:100%; 
+	height:150px;
+	background-color: #000000;
+}
+#strip a{
+	float : right;
+	color: #FCEBB6;
+	text-decoration: none;
+	margin-top: -50px;
+
+}
+#strip h4{
+	float: left;
+ 	z-index: -1;
+ 	margin-top: 0px;
+}
+.column {
+	float: left;
+	height: 600px;
+	margin-left: inherit;
+	width: inherit;
+}
+.left {
+	text-align: center;
+	width: 10%;
+	background-color:#000000;
+}
+.right {
+	background-color: #ffffff;
+	padding: 0px;
+	width: 90%;
+	text-align: justify;
+	overflow: auto;
+}
+#leftn a{
+	color: #FCEBB6;
+	display: block;
+	text-decoration: none;
+	padding:0px;
+}
+.article h4{
+	display: inline;
+	float: left;
+	
+}
+.article select{
+	display: inline;
+	margin: 20px 0px 0px 10px;
+
+}
+#imaget{
+
+	float: left;
+	margin-top: auto;
+	width: 80%;
+}
+
+#imaget td{
+	padding-left:20px;
+	padding-bottom: 30px;
+	margin-left: auto;
+}
+.container{
+	position: relative;
+  	width: 100%;	
+
+}
+#form p{
+	float: left;
+	padding-left: 30px;
+	white-space: pre;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #00b8e6;
+}
+.container:hover .overlay {
+  opacity: 1;
+}
+.image {
+  display: block;
+  width: auto;
+  height: 150px;
+}
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  padding-top: 0px;
+}
+.right h2{
+	display: block;
+	clear: both;
+	float: left;
+	padding-left: 20px;
+}
+hr{
+	clear: both;
+	 display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+
+}
+#Uform{
+	padding-top: 10px;
+	padding-left: 50px;
+	
+}
+#Uform label{
+	padding-bottom:10px;
+	display: inline-block;
+	float: left;
+	clear: left;
+	width: 150px;
+	
+}
+#Uform input{
+	display: inline-block;
+	float: left;
+	border: none;
+}
+#Uform textarea{
+	width:250px;
+	display: inline-block;
+	float: left;
+	border: none;
+}
+#submit{
+
+	margin-left: -10px;
+}
+#addUser{
+	float: left;
+	display: inline;
+
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/home.css">
+</head>
+<body >
+
+	<div id="wrap">
+		<a href="home.htm"><img class="logo" src="images/download.jpg" class="logo"></a><br>
+	<header class="head" >
+		
+		<nav class="left">
+			<a href="home.htm">Home</a>
+			<a href="aboutus.htm">About Us</a><h3>
+		</nav>
+		<nav class="right">
+			<a href="index3.html">login (or) Join</a>
+		</nav>
+	</header>
+<article>
+	<img class="main" src="images/frontpage.jpg" alt="Hi there">
+	<img class="main" src="images/frontpage1.jpg" alt="Hi there">
+	<img class="main" src="images/frontpage2.jpg" alt="Hi there">
+	<img class="main" src="images/frontpage3.jpg" alt="Hi there">
+	<img class="main" src="images/frontpage4.jpg" alt="Hi there">
+
+	<section class="content"><br><br>
+		Don't ever lose your things!
+		<ul type="circle">
+			<li>Tabs for each item</li>
+			<li>categorized into sections</li>
+			<li>can have description and content for each room</li>
+		</ul>
+	</section>	
+	<div class="query">
+	<form class="form-style-4" action="/my-handling-form-page" method="post"> 
+		  <div>
+   <label for="field1">
+<span>Enter Your Name</span><input type="text" name="field1" required="true" />
+</label>
+<label for="field2">
+
+<span>Email Address</span><input type="email" name="field2" required="true" />
+</label>
+<label for="field3">
+<span>Short Subject</span><input type="text" name="field3" required="true" />
+</label>
+<label for="field4">
+<span>Message to Us</span><textarea name="field4" onkeyup="adjust_textarea(this)" required="true"></textarea>
+</label>
+<label>
+<span>&nbsp;</span><input type="submit" value="Send Letter" />
+
+</label>
+</form>
+<script type="text/javascript">
+//auto expand textarea
+function adjust_textarea(h) {
+    h.style.height = "20px";
+    h.style.height = (h.scrollHeight)+"px";
+}
+</script>
+
+
+</div>
+</div>
+	
+</article>
+	<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("main");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 3000); // Change image every 2 seconds
+}
+</script>
+
+</div>
+
+</body>
+</html>

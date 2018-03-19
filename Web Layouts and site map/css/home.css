@@ -1,0 +1,337 @@
+body{
+    background: url("../images/bg.jpg");
+    color: white;
+   
+}
+#wrap{
+    margin: auto;
+    width: 90%;
+    
+
+
+}
+.logo{
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+.left 
+{   padding-left:30px; 
+    float: left;
+    color: white;
+
+}
+.right {
+   text-align: right;
+   padding-right: 20px;
+   color: white;
+}
+.content{
+    color: white;
+}
+header a{
+
+    color: black;
+    text-decoration: none;
+      border: 1px solid #CCC;
+  border-radius: 1em;
+  padding: 1em;
+  color: white;
+}
+header a:hover{
+    color: white;
+    background-color:  #CD5C5C;
+}
+
+
+
+.logo{
+    width: 50px;
+    height: 50px;
+        border-radius: 50%;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+          transition:         transform .8s ease-in-out;
+}
+.main{
+    position: relative;
+    height: 500px;
+    width: 100%;
+    
+    border-radius: 2em;
+    display:none;
+       
+}
+/*.main{
+     background-size: cover;
+    animation:fade 2s infinite;
+-webkit-animation:fade 2s infinite;
+}
+
+.main1{
+     background-size: cover;
+    animation:fade2 2s infinite;
+-webkit-animation:fade2 2s infinite;
+}
+
+.main2{
+     background-size: cover;
+    animation:fade3 2s infinite;
+-webkit-animation:fade3 2s infinite;
+}
+
+.main3{
+     background-size: cover;
+    animation:fade4 2s infinite;
+-webkit-animation:fade4 2s infinite;
+}
+.main3{
+     background-size: cover;
+    animation:fade5 2s infinite;
+-webkit-animation:fade5 2s infinite;
+}
+
+@keyframes fade
+{
+   0%{
+     opacity: 1;
+  }
+  15% {
+     opacity:1;
+  }
+  25%{
+    opacity: 0;
+  }
+  90% {
+     opacity:0;
+  }
+  100% {
+     opacity:1;
+  }
+}
+@keyframes fade2
+{
+   0%{
+     opacity: 0;
+  }
+  15% {
+     opacity:1;
+  }
+  25%{
+    opacity: 1;
+  }
+  90% {
+     opacity:0;
+  }
+  100% {
+     opacity:0;
+  }
+}
+@keyframes fade3
+{
+   0%{
+     opacity: 0;
+  }
+  15% {
+     opacity:0;
+  }
+  25%{
+    opacity: 1;
+  }
+  90% {
+     opacity:1;
+  }
+  100% {
+     opacity:0;
+  }
+}
+@keyframes fade4
+{
+   0%{
+     opacity: 0;
+  }
+  15% {
+     opacity:0;
+  }
+  25%{
+    opacity: 0;
+  }
+  90% {
+     opacity:1;
+  }
+  100% {
+     opacity:1;
+  }
+}
+@keyframes fade5
+{
+   0%{
+     opacity: 0;
+  }
+  15% {
+     opacity:0;
+  }
+  25%{
+    opacity: 0;
+  }
+  90% {
+     opacity:0;
+  }
+  100% {
+     opacity:1;
+  }
+}*/
+.logo:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+
+form {
+   
+  width: 50px;
+  height: 250px; 
+  text-align: left;
+  text-align-last: left;
+    padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+  float:right;
+  position: fixed;
+  top:300px;
+  left:950px;
+  
+
+}
+
+form div + div {
+  margin-top: 1em;
+}
+
+label {
+ 
+  display: inline-block;
+  width: 90px;
+  text-align: right;
+}
+
+input, textarea {
+
+  font: 1em sans-serif;
+
+  width: 300px;
+  box-sizing: border-box;
+
+  border: 1px solid #999;
+}
+
+input:focus, textarea:focus {
+ 
+  border-color: #000;
+}
+
+textarea {
+  
+  vertical-align: top;
+
+ 
+  height: 5em;
+}
+
+.button {
+
+  padding-left: 90px; 
+}
+
+button {
+  
+  margin-left: .5em;
+}
+header{
+    
+    vertical-align: center;
+    height: 50px;
+
+}
+.form-style-4{
+    width: 300px;
+    font-size: 16px;
+    background: #495C70;
+    padding: 30px 30px 15px 30px;
+    border: 5px solid #53687E;
+}
+.form-style-4 input[type=submit],
+.form-style-4 input[type=button],
+.form-style-4 input[type=text],
+.form-style-4 input[type=email],
+.form-style-4 textarea,
+.form-style-4 label
+{
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    color: #fff;
+
+}
+.form-style-4 label {
+    display:block;
+    margin-bottom: 10px;
+}
+.form-style-4 label > span{
+    display: inline-block;
+    
+    width: 150px;
+}
+.form-style-4 input[type=text],
+.form-style-4 input[type=email] 
+{
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed #83A4C5;
+    width: 275px;
+    outline: none;
+    padding: 0px 0px 0px px;
+    font-style: italic;
+}
+.form-style-4 textarea{
+    font-style: italic;
+    padding: 0px 0px 0px 0px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px dashed #83A4C5;
+    width: 275px;
+    overflow: hidden;
+    resize:none;
+    height:20px;
+}
+input,textarea{
+
+}
+label {
+
+  display: inline-block;
+  width: 140px;
+  text-align: right;
+}​
+
+.form-style-4 textarea:focus, 
+.form-style-4 input[type=text]:focus,
+.form-style-4 input[type=email]:focus,
+.form-style-4 input[type=email] :focus
+{
+    border-bottom: 1px dashed #D9FFA9;
+}
+
+.form-style-4 input[type=submit],
+.form-style-4 input[type=button]{
+    background: #576E86;
+    border: none;
+    padding: 8px 10px 8px 10px;
+    border-radius: 5px;
+    color: #A8BACE;
+    text-align-last:  center;
+}
+.form-style-4 input[type=submit]:hover,
+.form-style-4 input[type=button]:hover{
+background: #394D61;
+
+}
