@@ -2,23 +2,23 @@ CREATE DATABASE item_finder;
 use item_finder;
 
 CREATE TABLE Households (
-	householdId int NOT NULL AUTO_INCREMENT,
+	householdId int(10) NOT NULL AUTO_INCREMENT,
 	householdPassword varchar(20),
 	householdName varchar(20),
 	PRIMARY KEY (householdId)
 );
 CREATE TABLE UserTypes (
-	typeId int NOT NULL AUTO_INCREMENT,
+	typeId int(1) NOT NULL AUTO_INCREMENT,
 	typeName varchar(20),
 	PRIMARY KEY (typeId)
 );
 CREATE TABLE AccessTypes (
-	accessTypeId int NOT NULL AUTO_INCREMENT,
+	accessTypeId int(1) NOT NULL AUTO_INCREMENT,
 	accessName varchar(50),
 	PRIMARY KEY (accessTypeId)
 );
 CREATE TABLE Users (
-	userId int NOT NULL AUTO_INCREMENT,
+	userId int(10) NOT NULL AUTO_INCREMENT,
 	password varchar(50),
 	name varchar(50),
 	accountType int(1),
@@ -28,7 +28,7 @@ CREATE TABLE Users (
 	FOREIGN KEY (householdId) REFERENCES Households(householdId)
 );
 CREATE TABLE Rooms (
-	roomId int NOT NULL AUTO_INCREMENT,
+	roomId int(10) NOT NULL AUTO_INCREMENT,
 	roomName varchar(20),
 	roomDesc varchar(50),
 	householdId int(10),
@@ -36,7 +36,7 @@ CREATE TABLE Rooms (
 	FOREIGN KEY (householdId) REFERENCES Households(householdId)
 );
 CREATE TABLE StoragePlaces (
-	storagePlaceId int NOT NULL AUTO_INCREMENT,
+	storagePlaceId int(10) NOT NULL AUTO_INCREMENT,
 	storagePlaceName varchar(20),
 	storagePlaceDesc varchar(50),
 	roomId int(10),
@@ -44,11 +44,11 @@ CREATE TABLE StoragePlaces (
 	FOREIGN KEY (roomId) REFERENCES Rooms(roomId)
 );
 CREATE TABLE Items (
-	itemId int NOT NULL AUTO_INCREMENT,
+	itemId int(10) NOT NULL AUTO_INCREMENT,
 	itemName varchar(20),
 	itemDesc varchar(50),
 	storagePlaceId int(10),
-	accessType int(10),
+	accessType int(1),
 	lastUpdated datetime,
 	lastUpdatedBy int(10),
 	PRIMARY KEY(itemId),
