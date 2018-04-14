@@ -168,13 +168,17 @@ input[type=checkbox]:checked:before {
 	display: block;
 }
 
-@media only screen and (max-width: 1070px) {
+@media only screen and (max-width: 1350px) {
 	.container-fluid > .row {
 		display: block;
 	}
 	
 	.sidebar {
 		width: 100%;
+	}
+	
+	.sidebar .navbar {
+		display: flex;
 	}
 }
 
@@ -185,6 +189,10 @@ input[type=checkbox]:checked:before {
 	}
 	
 	header .navbar .navbar-nav {
+		display: block;
+	}
+	
+	.sidebar .navbar {
 		display: block;
 	}
 	
