@@ -40,7 +40,8 @@
 							<td>Household Name:</td>
 							<td>
 								<span class="right-pad">Test Household</span>
-								<input type="checkbox" data-toggle="tooltip" data-html="true" title="Check this to remove yourself from this household.">
+								<input id="householdCb" type="checkbox">
+								<label for="householdCb" data-toggle="tooltip" data-html="true" title="Check this to remove yourself from this household."></label>
 							</td>
 						</tr>
 						<tr>

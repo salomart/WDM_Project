@@ -34,26 +34,17 @@ input[type=text], input[type=password] {
 }
 
 input[type=checkbox] {
-	position: relative;
-	vertical-align: text-top;
+	display:none;
 }
 
-input[type=checkbox]:before {
-	position: absolute;
-	background-color: #FFFFFF;
-	height: 100%;
-	width: 100%;
+input[type=checkbox] + label:before {
 	font-family: FontAwesome;
 	display: inline-block;
-	content:"\f096";
-	letter-spacing: 10px;
+	content: "\f096";
 }
 
-input[type=checkbox]:checked:before {
-	font-family: FontAwesome;
-	display: inline-block;
-	content:"\f046";
-	letter-spacing: 5px;
+input[type=checkbox]:checked + label:before {
+	content: "\f046";
 }
 
 .grow-container {
