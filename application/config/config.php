@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/WDM_G1_Project/';
+$config['base_url'] = 'http://wherestheitem.us-east-2.elasticbeanstalk.com/';
 
 /*
 |--------------------------------------------------------------------------
