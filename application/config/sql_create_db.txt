@@ -1,23 +1,23 @@
 CREATE DATABASE wheres_the_item;
 use wheres_the_item;
 
-CREATE TABLE Households (
+CREATE TABLE households (
 	householdId int(10) NOT NULL AUTO_INCREMENT,
 	householdPassword varchar(20),
 	householdName varchar(20),
 	PRIMARY KEY (householdId)
 );
-CREATE TABLE UserTypes (
+CREATE TABLE usertypes (
 	typeId int(1) NOT NULL AUTO_INCREMENT,
 	typeName varchar(20),
 	PRIMARY KEY (typeId)
 );
-CREATE TABLE AccessTypes (
+CREATE TABLE accesstypes (
 	accessTypeId int(1) NOT NULL AUTO_INCREMENT,
 	accessName varchar(50),
 	PRIMARY KEY (accessTypeId)
 );
-CREATE TABLE Users (
+CREATE TABLE users (
 	username varchar(15),
 	password varchar(50),
 	name varchar(50),
@@ -26,24 +26,24 @@ CREATE TABLE Users (
 	householdId int(10),
 	picUrl varchar(100),
 	PRIMARY KEY(username),
-	FOREIGN KEY (accountType) REFERENCES UserTypes(typeId),
-	FOREIGN KEY (householdId) REFERENCES Households(householdId)
+	FOREIGN KEY (accountType) REFERENCES usertypes(typeId),
+	FOREIGN KEY (householdId) REFERENCES households(householdId)
 );
-CREATE TABLE Rooms (
+CREATE TABLE rooms (
 	roomId int(10) NOT NULL AUTO_INCREMENT,
 	roomName varchar(20),
 	householdId int(10),
 	PRIMARY KEY(roomId),
-	FOREIGN KEY (householdId) REFERENCES Households(householdId)
+	FOREIGN KEY (householdId) REFERENCES households(householdId)
 );
-CREATE TABLE StoragePlaces (
+CREATE TABLE storageplaces (
 	storagePlaceId int(10) NOT NULL AUTO_INCREMENT,
 	storagePlaceName varchar(20),
 	roomId int(10),
 	PRIMARY KEY(storagePlaceId),
-	FOREIGN KEY (roomId) REFERENCES Rooms(roomId)
+	FOREIGN KEY (roomId) REFERENCES rooms(roomId)
 );
-CREATE TABLE Items (
+CREATE TABLE items (
 	itemId int(10) NOT NULL AUTO_INCREMENT,
 	itemName varchar(20),
 	storagePlaceId int(10),
@@ -52,33 +52,33 @@ CREATE TABLE Items (
 	lastUpdatedBy varchar(15),
 	picUrl varchar(100),
 	PRIMARY KEY(itemId),
-	FOREIGN KEY (storagePlaceId) REFERENCES StoragePlaces(storagePlaceId),
-	FOREIGN KEY (accessType) REFERENCES AccessTypes(accessTypeId),
-	FOREIGN KEY (lastUpdatedBy) REFERENCES Users(username)
+	FOREIGN KEY (storagePlaceId) REFERENCES storageplaces(storagePlaceId),
+	FOREIGN KEY (accessType) REFERENCES accesstypes(accessTypeId),
+	FOREIGN KEY (lastUpdatedBy) REFERENCES users(username)
 );
 
-INSERT INTO `wheres_the_item`.`UserTypes` (`typeName`) VALUES ('Admin');
-INSERT INTO `wheres_the_item`.`UserTypes` (`typeName`) VALUES ('Household Admin');
-INSERT INTO `wheres_the_item`.`UserTypes` (`typeName`) VALUES ('Household Member');
-INSERT INTO `wheres_the_item`.`UserTypes` (`typeName`) VALUES ('Household Guest');
-INSERT INTO `wheres_the_item`.`UserTypes` (`typeName`) VALUES ('Non-Household User');
+INSERT INTO `wheres_the_item`.`usertypes` (`typeName`) VALUES ('Admin');
+INSERT INTO `wheres_the_item`.`usertypes` (`typeName`) VALUES ('Household Admin');
+INSERT INTO `wheres_the_item`.`usertypes` (`typeName`) VALUES ('Household Member');
+INSERT INTO `wheres_the_item`.`usertypes` (`typeName`) VALUES ('Household Guest');
+INSERT INTO `wheres_the_item`.`usertypes` (`typeName`) VALUES ('Non-Household User');
 
-INSERT INTO `wheres_the_item`.`AccessTypes` (`accessName`) VALUES ('Everyone associated with the household');
-INSERT INTO `wheres_the_item`.`AccessTypes` (`accessName`) VALUES ('Household members only');
-INSERT INTO `wheres_the_item`.`AccessTypes` (`accessName`) VALUES ('Household admins only');
+INSERT INTO `wheres_the_item`.`accesstypes` (`accessName`) VALUES ('Everyone associated with the household');
+INSERT INTO `wheres_the_item`.`accesstypes` (`accessName`) VALUES ('Household members only');
+INSERT INTO `wheres_the_item`.`accesstypes` (`accessName`) VALUES ('Household admins only');
 
-INSERT INTO `wheres_the_item`.`Households` (`householdName`) VALUES ('Household 1');
-INSERT INTO `wheres_the_item`.`Households` (`householdName`) VALUES ('Household 2');
+INSERT INTO `wheres_the_item`.`households` (`householdName`) VALUES ('Household 1');
+INSERT INTO `wheres_the_item`.`households` (`householdName`) VALUES ('Household 2');
 
-INSERT INTO `wheres_the_item`.`Users` (`username`,`password`,`name`,`accountType`) VALUES ('user1','pw1','User 1',1);
-INSERT INTO `wheres_the_item`.`Users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user2','pw2','User 2',2,1);
-INSERT INTO `wheres_the_item`.`Users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user3','pw3','User 3',3,1);
-INSERT INTO `wheres_the_item`.`Users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user4','pw4','User 4',4,1);
-INSERT INTO `wheres_the_item`.`Users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user5','pw5','User 5',2,2);
-INSERT INTO `wheres_the_item`.`Users` (`username`,`password`,`name`,`accountType`) VALUES ('user6','pw6','User 6',5);
+INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`) VALUES ('user1','pw1','User 1',1);
+INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user2','pw2','User 2',2,1);
+INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user3','pw3','User 3',3,1);
+INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user4','pw4','User 4',4,1);
+INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user5','pw5','User 5',2,2);
+INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`) VALUES ('user6','pw6','User 6',5);
 
-INSERT INTO `wheres_the_item`.`Rooms` (`roomName`,`householdId`) VALUES ('Room 1',1);
-INSERT INTO `wheres_the_item`.`StoragePlaces` (`storagePlaceName`,`roomId`) VALUES ('Storage Place 1',1);
-INSERT INTO `wheres_the_item`.`Items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 1',1,1);
-INSERT INTO `wheres_the_item`.`Items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 2',1,2);
-INSERT INTO `wheres_the_item`.`Items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 3',1,3);
+INSERT INTO `wheres_the_item`.`rooms` (`roomName`,`householdId`) VALUES ('Room 1',1);
+INSERT INTO `wheres_the_item`.`storageplaces` (`storagePlaceName`,`roomId`) VALUES ('Storage Place 1',1);
+INSERT INTO `wheres_the_item`.`items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 1',1,1);
+INSERT INTO `wheres_the_item`.`items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 2',1,2);
+INSERT INTO `wheres_the_item`.`items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 3',1,3);
