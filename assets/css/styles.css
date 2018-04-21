@@ -190,4 +190,8 @@ input[type=checkbox]:checked + label:before {
 	.fit-img {
 		height: 300px;
 	}
+	
+	.navbar-brand {
+		margin-right: 0;
+	}
 }

@@ -14,13 +14,13 @@
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-				<a class="navbar-brand" href="home">Where's The Item?</a>
+				<a class="navbar-brand" href="<?php echo base_url(); ?>">Where's The Item?</a>
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="home">Home</a>
+						<a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="aboutus">About Us</a>
+						<a class="nav-link" href="aboutUs">About Us</a>
 					</li>
 				</ul>
 				<a class="btn btn-outline-primary spacing-1" href="register">Register</a>
