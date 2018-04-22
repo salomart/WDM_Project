@@ -23,7 +23,26 @@
 						<a class="nav-link" href="aboutUs">About Us</a>
 					</li>
 				</ul>
-				<a class="btn btn-outline-primary spacing-1" href="register">Register</a>
-				<a class="btn btn-outline-secondary spacing-1" href="login">Login</a>
+				<?php
+				if ($user_data != null):
+				$user_image_url = $user_data[0]["picUrl"] != null ? $user_data[0]["picUrl"] : "assets/images/user_default.png";
+				?>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link no-vert-pad" href="dashboard">
+							<img src="<?php echo $user_image_url; ?>" class="rounded-circle user-img nav-space" alt="User">
+							<span class="nav-space"><?php echo $user_data[0]["name"]; ?></span>
+						</a>
+					</li>
+				</ul>
+				<?php
+				echo form_open('login');
+				echo form_submit('submit', 'Logout', 'class="btn btn-outline-secondary nav-space"');
+				echo form_close();
+				?>
+				<?php else: ?>
+				<a class="btn btn-outline-primary nav-space" href="register">Register</a>
+				<a class="btn btn-outline-secondary nav-space" href="login">Login</a>
+				<?php endif; ?>
 			</nav>
 		</header>

@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-    'hostname' => 'wheres-the-item-db.c72x8ipqq7oz.us-east-2.rds.amazonaws.com',
-    'username' => 'wtiadmin',
-    'password' => 'wherestheitem',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
 	'database' => 'wheres_the_item',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

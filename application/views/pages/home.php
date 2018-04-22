@@ -8,19 +8,19 @@
 	</ul>
 	<div class="carousel-inner">
 		<div class="carousel-item active">
-			<img src="assets/images/frontpage.jpg" class="fit-img" alt="Slider Image 1">
+			<img src="assets/images/frontpage.jpg" class="slide-img" alt="Slider Image 1">
 		</div>
 		<div class="carousel-item">
-			<img src="assets/images/frontpage1.jpg" class="fit-img" alt="Slider Image 2">
+			<img src="assets/images/frontpage1.jpg" class="slide-img" alt="Slider Image 2">
 		</div>
 		<div class="carousel-item">
-			<img src="assets/images/frontpage2.jpg" class="fit-img" alt="Slider Image 3">
+			<img src="assets/images/frontpage2.jpg" class="slide-img" alt="Slider Image 3">
 		</div>
 		<div class="carousel-item">
-			<img src="assets/images/frontpage3.jpg" class="fit-img" alt="Slider Image 4">
+			<img src="assets/images/frontpage3.jpg" class="slide-img" alt="Slider Image 4">
 		</div>
 		<div class="carousel-item">
-			<img src="assets/images/frontpage4.jpg" class="fit-img" alt="Slider Image 5">
+			<img src="assets/images/frontpage4.jpg" class="slide-img" alt="Slider Image 5">
 		</div>
 	</div>
 	<a class="carousel-control-prev" href="#homePageSlider" data-slide="prev">
@@ -30,7 +30,7 @@
 		<span class="carousel-control-next-icon"></span>
 	</a>
 </div>
-<div class="container extra-padding grow-container">
+<div class="container vert-pad grow-container">
 	<div class="row">
 		<div class="col-md-6">
 			<h2>Don't ever lose your things!</h2>

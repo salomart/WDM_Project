@@ -1,27 +1,8 @@
+/*** Common Styles ***/
 body {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
-}
-
-.extra-padding {
-	padding-top: 2rem;
-	padding-bottom: 2rem;
-}
-
-.spacing-1 {
-	margin-left: .1875rem;
-	margin-right: .1875rem;
-}
-
-.spacing-2 {
-	margin-left: .375rem;
-	margin-right: .375rem;
-}
-
-.spacing-3 {
-	margin-top: 1rem;
-	margin-bottom: 1rem;
 }
 
 .tooltip-inner {
@@ -35,6 +16,13 @@ input[type=text], input[type=password] {
 
 input[type=checkbox] {
 	display:none;
+	margin-left: 0.5rem;
+}
+
+input[type=checkbox] + label {
+	margin-top: 0.5rem;
+	margin-left: 0.5rem;
+	margin-bottom: -.5rem
 }
 
 input[type=checkbox] + label:before {
@@ -47,14 +35,21 @@ input[type=checkbox]:checked + label:before {
 	content: "\f046";
 }
 
-.grow-container {
-	flex: 1;
+
+
+/*** Top Bar Styles ***/
+.nav-space {
+	margin-left: .1875rem;
+	margin-right: .1875rem;
 }
 
-.container-fluid > .row {
-	height: 100%;
+.user-img {
+	object-fit: cover;
+	width: 40px;
+	height: 40px;
 }
 
+/*** Side Bar Styles ***/
 .sidebar {
 	width: 225px;
 	display: flex;
@@ -78,12 +73,59 @@ input[type=checkbox]:checked + label:before {
 	color: #343a40;
 }
 
-.main {
-	flex-grow: 1;
+.nav-link .fa {
+	margin-right: 1rem;
+}
+
+
+
+/*** Content Area Styles ***/
+.grow-container {
+	flex: 1;
+}
+
+.container-fluid > .row {
+	height: 100%;
+}
+
+.container-fluid > .row > .grow-container {
 	padding: 1rem;
 }
 
-.main .col-md-6 .card {
+.vert-pad {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.no-vert-pad {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.field-space {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+
+/*** Footer Styles ***/
+.footer .navbar {
+	display: block;
+}
+
+
+
+/*** Home Page Styles ***/
+.slide-img {
+	object-fit: cover;
+	width: 100%;
+	height: 500px;
+}
+
+
+
+/*** Dashboard Page Styles ***/
+.card {
 	margin: 1rem 0;
 }
 
@@ -95,23 +137,7 @@ input[type=checkbox]:checked + label:before {
 	margin-top: 0.5rem;
 }
 
-.fit-img {
-	object-fit: cover;
-	width: 100%;
-	height: 500px;
-}
-
-.user-img {
-	object-fit: cover;
-	width: 40px;
-	height: 40px;
-}
-
-.nav-link .fa {
-	margin-right: 1rem;
-}
-
-.h-item-top-bar button {
+.h-item-options button {
 	margin: 0.25rem 0;
 }
 
@@ -130,19 +156,6 @@ input[type=checkbox]:checked + label:before {
 	border: 1px solid #6c757d;
 }
 
-.settings-table {
-	margin-top: 2rem;
-	display: inline-table;
-}
-
-.settings-table td:first-child {
-	padding-right: 2rem;
-}
-
-.settings-table td {
-	padding: 0.5rem 0;
-}
-
 .modal-table td:first-child {
 	padding-right: 2rem;
 }
@@ -151,14 +164,39 @@ input[type=checkbox]:checked + label:before {
 	padding: 0.5rem 0;
 }
 
-.right-pad {
-	padding-right: 0.25rem;
+
+
+/*** Settings Page Styles ***/
+.settings-form {
+	display: inline-block;
+	text-align: left;
+	margin-top: 2em;
 }
 
-.footer .navbar {
+.form-row {
+	padding: 0.4rem;
+}
+
+.form-row:last-child {
 	display: block;
 }
 
+.form-row input[type="text"], .form-row input[type="password"], .form-row input[type="file"] {
+	width: 200px;
+}
+
+.form-row span:nth-child(1) {
+	width: 200px;
+}
+
+.form-row span {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+
+
+/*** Responsive Styles ***/
 @media only screen and (max-width: 1350px) {
 	.container-fluid > .row {
 		display: block;
@@ -187,8 +225,12 @@ input[type=checkbox]:checked + label:before {
 		display: block;
 	}
 	
-	.fit-img {
+	.slide-img {
 		height: 300px;
+	}
+	
+	.no-vert-pad {
+		padding-bottom: .5rem;
 	}
 	
 	.navbar-brand {
