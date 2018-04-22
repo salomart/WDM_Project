@@ -12,7 +12,7 @@
 				</a>
 			</nav>
 		</div>
-		<div class="main">
+		<div class="grow-container">
 			<h1>Dashboard Home</h1>
 			Below are the items, storage places, rooms, and members in your household.
 			<div class="row">
@@ -24,7 +24,7 @@
 						</div>
 						<div id="collapseItems" class="collapse show">
 							<div class="card-body">
-								<div class="h-item-top-bar">
+								<div class="h-item-options">
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add Item</button>
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">Update Item</button>
 									<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete Item(s)</button>
@@ -45,7 +45,7 @@
 						</div>
 						<div id="collapseStorage" class="collapse show">
 							<div class="card-body">
-								<div class="h-item-top-bar">
+								<div class="h-item-options">
 									<button type="button" class="btn btn-primary">Add Place</button>
 									<button type="button" class="btn btn-primary">Update Place</button>
 									<button type="button" class="btn btn-danger">Delete Place(s)</button>
@@ -76,7 +76,7 @@
 						</div>
 						<div id="collapseRooms" class="collapse show">
 							<div class="card-body">
-								<div class="h-item-top-bar">
+								<div class="h-item-options">
 									<button type="button" class="btn btn-primary">Add Room</button>
 									<button type="button" class="btn btn-primary">Update Room</button>
 									<button type="button" class="btn btn-danger">Delete Room(s)</button>
@@ -103,7 +103,7 @@
 						</div>
 							<div id="collapseMembers" class="collapse show">
 							<div class="card-body">
-								<div class="h-item-top-bar">
+								<div class="h-item-options">
 									<button type="button" class="btn btn-primary">Add User</button>
 									<button type="button" class="btn btn-danger">Remove User(s)</button>
 								</div>
