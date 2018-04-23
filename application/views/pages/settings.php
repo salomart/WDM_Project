@@ -56,7 +56,7 @@
 			<?php elseif($update_fail): ?>
 			<div class="alert alert-success alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				Changes were apllied successfully.
+				An error occured when applying changes.
 			</div>
 			<?php endif; ?>
 			<div class="form-row">

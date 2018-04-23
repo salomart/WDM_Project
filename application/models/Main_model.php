@@ -10,15 +10,6 @@ Class Main_model extends CI_Model {
         }
     }
     
-    public function login_user($data) {
-        $query = $this->db->get_where('users', $data);
-        if ($query->num_rows() == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
     public function fetch_user($data) {
         $query = $this->db->get_where('users', $data);
         return $query->result_array();
@@ -40,5 +31,25 @@ Class Main_model extends CI_Model {
             "users.householdId=households.householdId WHERE users.username='" . $username . "'";
         $query = $this->db->query($sql);
         return $query->result_array();
+    }
+    
+    public function create_household($data) {
+        if ($this->db->insert('households', array( 'householdName' => $data["householdName"] ))) {
+            $insertId = $this->db->insert_id();
+            
+            $this->db->set(array(
+                'householdId' => $insertId,
+                'accountType' => 2
+            ));
+            $this->db->where('username', $data["username"]);
+            
+            if ($this->db->update('users')) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }
