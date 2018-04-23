@@ -68,19 +68,4 @@ INSERT INTO `wheres_the_item`.`accesstypes` (`accessName`) VALUES ('Household me
 INSERT INTO `wheres_the_item`.`accesstypes` (`accessName`) VALUES ('Household admins only');
 
 INSERT INTO `wheres_the_item`.`households` (`householdName`) VALUES ('N/A');
-UPDATE `households` SET `householdId` = NULL WHERE `households`.`householdId` = 1;
-INSERT INTO `wheres_the_item`.`households` (`householdName`) VALUES ('Household 1');
-INSERT INTO `wheres_the_item`.`households` (`householdName`) VALUES ('Household 2');
-
-INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user1','pw1','User 1',1,0);
-INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user2','pw2','User 2',2,2);
-INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user3','pw3','User 3',3,2);
-INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user4','pw4','User 4',4,2);
-INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user5','pw5','User 5',2,3);
-INSERT INTO `wheres_the_item`.`users` (`username`,`password`,`name`,`accountType`,`householdId`) VALUES ('user6','pw6','User 6',5,0);
-
-INSERT INTO `wheres_the_item`.`rooms` (`roomName`,`householdId`) VALUES ('Room 1',2);
-INSERT INTO `wheres_the_item`.`storageplaces` (`storagePlaceName`,`roomId`) VALUES ('Storage Place 1',1);
-INSERT INTO `wheres_the_item`.`items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 1',1,1);
-INSERT INTO `wheres_the_item`.`items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 2',1,2);
-INSERT INTO `wheres_the_item`.`items` (`itemName`,`storagePlaceId`,`accessType`) VALUES ('Item 3',1,3);
+UPDATE `households` SET `householdId` = 0 WHERE `households`.`householdId` = 1;
