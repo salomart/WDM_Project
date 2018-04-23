@@ -97,6 +97,11 @@ input[type=checkbox]:checked + label:before {
 	padding-bottom: 2rem;
 }
 
+.vert-pad-less {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
 .no-vert-pad {
 	padding-top: 0;
 	padding-bottom: 0;
@@ -106,6 +111,12 @@ input[type=checkbox]:checked + label:before {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
+
+.alert-mrg {
+	margin-top: 1rem;
+	margin-bottom: 0;
+}
+
 
 
 /*** Footer Styles ***/
@@ -157,7 +168,7 @@ input[type=checkbox]:checked + label:before {
 }
 
 .modal-table td:first-child {
-	padding-right: 2rem;
+	width: 175px;
 }
 
 .modal-table td {

@@ -15,6 +15,28 @@
 		<div class="grow-container">
 			<h1>Dashboard Home</h1>
 			Below are the items, storage places, rooms, and members in your household.
+			<?php if ($action_success != null): ?>
+			<div class="alert alert-success alert-dismissible alert-mrg">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<?php echo $action_success; ?>
+			</div>
+			<?php elseif ($action_fail != null): ?>
+			<div class="alert alert-danger alert-dismissible alert-mrg">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<?php echo $action_fail; ?>
+			</div>
+			<?php endif; ?>
+			<?php if ($user_data[0]["accountType"] == 5): ?>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="jumbotron field-space vert-pad-less">
+						<span>You aren't associated with a household. Create a new household or have a household admin add you to their household.</span>
+						<br>
+						<button type="button" id="createHousehold" class="btn btn-primary field-space" data-toggle="modal" data-target="#dashboardModal">Create A Household</button>
+					</div>
+				</div>
+			</div>
+			<?php else: ?>
 			<div class="row">
 				<div class="col-md-6">
 					<div class="card">
@@ -128,11 +150,12 @@
 					</div>
 				</div>
 			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </div>
-<!-- Modals -->
-<div class="modal fade" id="addModal">
+<!-- Modal -->
+<?php echo form_open('dashboard', 'class="modal fade" id="dashboardModal" name="modalForm"'); ?>
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -140,120 +163,9 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
-				<table class="modal-table">
-					<tbody>
-						<tr>
-							<td>Item Name:</td>
-							<td>
-								<input class="form-control" type="text">
-							</td>
-						</tr>
-						<tr>
-							<td>Storage Place:</td>
-							<td>
-								<select class="form-control">
-									<option></option>
-									<option>Table</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>Access Type:</td>
-							<td>
-								<select class="form-control">
-									<option></option>
-									<option>Everyone</option>
-									<option>Household Members</option>
-									<option>Household Admins</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>Image URL:</td>
-							<td>
-								<input class="form-control" type="text">
-							</td>
-						</tr>
-					</tbody>
-				</table>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
 			</div>
 		</div>
 	</div>
-</div>
-<div class="modal fade" id="updateModal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Update Item</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">
-				<table class="modal-table">
-					<tbody>
-						<tr>
-							<td>Item Name:</td>
-							<td>
-								<input class="form-control" type="text" value="Scissors">
-							</td>
-						</tr>
-						<tr>
-							<td>Storage Place:</td>
-							<td>
-								<select class="form-control">
-									<option></option>
-									<option selected>Table</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>Access Type:</td>
-							<td>
-								<select class="form-control">
-									<option></option>
-									<option selected>Everyone</option>
-									<option>Household Members</option>
-									<option>Household Admins</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>Image URL:</td>
-							<td>
-								<input class="form-control" type="text" value="scissors.jpg">
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="modal fade" id="deleteModal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Delete Item(s)</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">
-				Delete The Following Items?
-				<ul>
-					<li>Scissors</li>
-					<li>Pen</li>
-				</ul>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
-			</div>
-		</div>
-	</div>
-</div>
+<?php echo form_close(); ?>
