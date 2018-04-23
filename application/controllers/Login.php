@@ -24,14 +24,11 @@ class Login extends CI_Controller {
             $this->load->view('pages/login', $data);
             $this->load->view('templates/footer', $data);
         } else {
-            $post_data = array(
-                'username' => $this->input->post('username'),
-                'password' => $this->input->post('password')
-            );
+            $post_data = array( 'username' => $this->input->post('username') );
             
-            $result = $this->main_model->login_user($post_data);
+            $result = $this->main_model->fetch_user($post_data);
             
-            if ($result) {
+            if (count($result) == 1 && strcmp($result[0]["password"], $this->input->post('password')) == 0) {
                 $_SESSION['username'] = $this->input->post('username');
                 redirect('dashboard');
             } else {

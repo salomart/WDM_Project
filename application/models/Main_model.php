@@ -10,15 +10,6 @@ Class Main_model extends CI_Model {
         }
     }
     
-    public function login_user($data) {
-        $query = $this->db->get_where('users', $data);
-        if ($query->num_rows() == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
     public function fetch_user($data) {
         $query = $this->db->get_where('users', $data);
         return $query->result_array();
