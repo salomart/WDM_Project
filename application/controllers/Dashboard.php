@@ -27,9 +27,8 @@ class Dashboard extends CI_Controller {
                 }
             }
             
-            if (isset($_SESSION['username'])) {
-                $session_data = array( 'username' => $_SESSION['username'] );
-                $data['user_data'] = $this->main_model->fetch_user($session_data);
+            $session_data = array( 'username' => $_SESSION['username'] );
+            $data['user_data'] = $this->main_model->fetch_user($session_data);
             }
             
             $this->load->view('templates/header', $data);
