@@ -3,7 +3,6 @@ use wheres_the_item;
 
 CREATE TABLE households (
 	householdId int(10) NOT NULL AUTO_INCREMENT,
-	householdPassword varchar(20),
 	householdName varchar(20),
 	PRIMARY KEY (householdId)
 );
