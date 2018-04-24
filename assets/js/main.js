@@ -14,6 +14,16 @@ $(document).ready(function() {
 		$("#dashboardModal .modal-dialog .modal-content .modal-footer").html(modal_footer);
 	});
 	
+	$(".card-header").click(function() {
+		if ($(this).children("i:first").hasClass("fa-chevron-up")) {
+			$(this).children("i:first").removeClass("fa-chevron-up");
+			$(this).children("i:first").addClass("fa-chevron-down");
+		} else {
+			$(this).children("i:first").removeClass("fa-chevron-down");
+			$(this).children("i:first").addClass("fa-chevron-up");
+		}
+	});
+	
 	$("#dashboardModal").submit(function(event) {
 		if (document.forms["modalForm"]["householdName"] != null) {
 			var input = document.forms["modalForm"]["householdName"];
