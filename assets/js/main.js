@@ -25,7 +25,7 @@ $(document).ready(function() {
 	});
 	
 	$("#dashboardModal").submit(function(event) {
-		if (document.forms["modalForm"]["householdName"] != null) {
+		if (document.forms["modalForm"]["submit"].value == "Create Household") {
 			var input = document.forms["modalForm"]["householdName"];
 			
 			if (input.classList.contains("border-danger")) {
