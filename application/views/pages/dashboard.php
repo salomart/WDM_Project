@@ -36,7 +36,7 @@
 					</div>
 				</div>
 			</div>
-			<?php else: ?>
+			<?php elseif ($user_data[0]["householdId"] != 0): ?>
 			<div class="row">
 				<div class="col-md-6">
 					<div class="card">
@@ -47,9 +47,9 @@
 						<div id="collapseItems" class="collapse show">
 							<div class="card-body">
 								<div class="h-item-options">
-									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add Item</button>
-									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">Update Item</button>
-									<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete Item(s)</button>
+									<button type="button" class="btn btn-primary">Add Item</button>
+									<button type="button" class="btn btn-primary">Update Item</button>
+									<button type="button" class="btn btn-danger">Delete Item(s)</button>
 								</div>
 								<img src="assets/images/scissors.jpg" class="h-item" data-toggle="tooltip" data-html="true" title="Item name: Scissors<br />Last Used: 4/7/2018<br />Last Used By: Dhirish<br />Location: Table">
 								<img src="assets/images/cell.jpg" class="h-item" data-toggle="tooltip" data-html="true" title="Item name: Cell Phone<br />Last Used On: 4/7/2018<br />Last Used By: Dhirish<br />Location: Table">
