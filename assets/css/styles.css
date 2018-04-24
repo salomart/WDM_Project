@@ -19,12 +19,6 @@ input[type=checkbox] {
 	margin-left: 0.5rem;
 }
 
-input[type=checkbox] + label {
-	margin-top: 0.5rem;
-	margin-left: 0.5rem;
-	margin-bottom: -.5rem
-}
-
 input[type=checkbox] + label:before {
 	font-family: FontAwesome;
 	display: inline-block;
@@ -194,6 +188,12 @@ input[type=checkbox]:checked + label:before {
 
 .form-row input[type="text"], .form-row input[type="password"], .form-row input[type="file"] {
 	width: 200px;
+}
+
+.form-row input[type=checkbox] + label {
+	margin-top: 0.5rem;
+	margin-left: 0.5rem;
+	margin-bottom: -.5rem
 }
 
 .form-row span:nth-child(1) {
