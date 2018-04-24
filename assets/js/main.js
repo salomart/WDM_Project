@@ -2,11 +2,11 @@ $(document).ready(function() {
 	$('[data-toggle="tooltip"]').tooltip();
 	
 	$("#createHousehold").click(function() {
-		modal_title = 'Create A Household';
-		modal_body = '<table class="modal-table"><tbody><tr><td>Household Name:</td><td>' +
+		var modal_title = 'Create A Household';
+		var modal_body = '<table class="modal-table"><tbody><tr><td>Household Name:</td><td>' +
 			'<input type="text" name="householdName" class="form-control"></td></tr>' +
 			'<tr id="householdNameErr"></tr></tbody></table>';
-		modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
+		var modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
 			'<input type="submit" name="submit" value="Create Household" class="btn btn-primary">';
 		
 		$("#dashboardModal .modal-dialog .modal-content .modal-header .modal-title").html(modal_title);
