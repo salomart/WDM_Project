@@ -52,4 +52,29 @@ Class Main_model extends CI_Model {
             return false;
         }
     }
+    
+    public function fetch_member_data($householdId) {
+        $sql = "SELECT users.name, users.username, usertypes.typeName FROM users INNER JOIN usertypes ON " .
+            "users.accountType=usertypes.typeId WHERE users.householdId='" . $householdId . "'";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+    
+    public function remove_members($usernames) {
+        $usernamesStr = "";
+        
+        for ($i=0; $i<count($usernames); $i++) {
+            if ($i > 0) {
+                $usernamesStr = $usernamesStr . ", '" . $usernames[$i] . "'";
+            } else {
+                $usernamesStr = "'" . $usernames[$i] . "'";
+            }
+        }
+        
+        $sql = "UPDATE users SET accountType = 5, householdId = 0 WHERE username IN(" . $usernamesStr . ")";
+        
+        if (!$this->db->query($sql)) {
+            return $this->db->error();
+        }
+    }
 }

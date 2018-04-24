@@ -1,3 +1,12 @@
+<script>
+var user_type_ids = ['2','3','4'];
+var user_type_names = ['Household Admin','Household Member','Household Guest'];
+<?php
+if ($user_data[0]["householdId"] != 0) {
+    echo "var household_id = " . $user_data[0]["householdId"] . ";";
+}
+?>
+</script>
 <div class="container-fluid grow-container">
 	<div class="row">
 		<div class="sidebar">
@@ -125,26 +134,40 @@
 						</div>
 							<div id="collapseMembers" class="collapse show">
 							<div class="card-body">
+								<?php if (count($member_data) > 0): ?>
+								<?php if ($user_data[0]["accountType"] == 2): ?>
 								<div class="h-item-options">
-									<button type="button" class="btn btn-primary">Add User</button>
-									<button type="button" class="btn btn-danger">Remove User(s)</button>
+									<button type="button" id="addMember" class="btn btn-primary" data-toggle="modal" data-target="#dashboardModal">Add Member</button>
+									<button type="button" id="updateMember" class="btn btn-primary" data-toggle="modal" data-target="#dashboardModal" disabled>Update Member</button>
+									<button type="button" id="removeMembers" class="btn btn-danger" data-toggle="modal" data-target="#dashboardModal" disabled>Remove Member(s)</button>
 								</div>
+								<?php endif; ?>
 								<table class="table table-striped">
 									<tbody>
 										<tr>
 											<th>Name</th>
 											<th>Access Type</th>
+											<?php if ($user_data[0]["accountType"] == 2): ?>
+											<th></th>
+											<?php endif; ?>
 										</tr>
-										<tr>
-											<td>Dummy User</td>
-											<td>Household Admin</td>
+										<?php foreach($member_data as $member): ?>
+										<tr class="<?php echo $member['username']; ?>">
+											<td><?php echo $member['name'] ?></td>
+											<td><?php echo $member['typeName'] ?></td>
+											<?php if ($user_data[0]["accountType"] == 2 && strcmp($member['username'], $user_data[0]["username"]) != 0): ?>
+											<td>
+												<?php echo form_checkbox('memberCb', $member['username'], FALSE, 'id="' . $member['username'] . '"'); ?>
+												<label for="<?php echo $member['username']; ?>"></label>
+											</td>
+											<?php elseif ($user_data[0]["accountType"] == 2): ?>
+											<td></td>
+											<?php endif; ?>
 										</tr>
-										<tr>
-											<td>Dhirish</td>
-											<td>Household Member</td>
-										</tr>
+										<?php endforeach; ?>
 									</tbody>
 								</table>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
