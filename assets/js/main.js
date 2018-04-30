@@ -1,14 +1,14 @@
 $(document).ready(function() {
 	var selected_members = [];
 	$('[data-toggle="tooltip"]').tooltip();
-	
+
 	$("#createHousehold").click(function() {
 		var modal_title = 'Create A Household';
 		var modal_body = '<table class="modal-table"><tbody><tr><td>Household Name:</td><td>' +
-			'<input type="text" name="householdName" class="form-control"></td></tr>' +
-			'<tr id="householdNameErr"></tr></tbody></table>';
+		'<input type="text" name="householdName" class="form-control"></td></tr>' +
+		'<tr id="householdNameErr"></tr></tbody></table>';
 		var modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
-			'<input type="submit" name="submit" value="Create Household" class="btn btn-primary">';
+		'<input type="submit" name="submit" value="Create Household" class="btn btn-primary">';
 		
 		$("#dashboardModal .modal-dialog .modal-content .modal-header .modal-title").html(modal_title);
 		$("#dashboardModal .modal-dialog .modal-content .modal-body").html(modal_body);
@@ -56,13 +56,13 @@ $(document).ready(function() {
 		
 		var modal_title = 'Add A Member';
 		var modal_body = '<table class="modal-table"><tbody><tr><td>Username:</td><td>' +
-			'<input type="text" name="username" class="form-control"></td></tr>' +
-			'<tr id="usernameErr"></tr><tr><td>Account Type:</td><td>' +
-			'<select name="accountType" class="form-control">' + accountOpts + '</select>' +
-			'</td></tr><tr id="accountTypeErr"></tr></tbody></table>' +
-			'<input type="hidden" name="householdId" value="' + household_id + '">';
+		'<input type="text" name="username" class="form-control"></td></tr>' +
+		'<tr id="usernameErr"></tr><tr><td>Account Type:</td><td>' +
+		'<select name="accountType" class="form-control">' + accountOpts + '</select>' +
+		'</td></tr><tr id="accountTypeErr"></tr></tbody></table>' +
+		'<input type="hidden" name="householdId" value="' + household_id + '">';
 		var modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
-			'<input type="submit" name="submit" value="Add Member" class="btn btn-primary">';
+		'<input type="submit" name="submit" value="Add Member" class="btn btn-primary">';
 		
 		$("#dashboardModal .modal-dialog .modal-content .modal-header .modal-title").html(modal_title);
 		$("#dashboardModal .modal-dialog .modal-content .modal-body").html(modal_body);
@@ -84,12 +84,12 @@ $(document).ready(function() {
 		
 		var modal_title = 'Update A Member';
 		var modal_body = '<table class="modal-table"><tbody><tr><td>Name:</td><td>' +
-			name + '</td></tr><tr id="usernameErr"></tr><tr><td>Account Type:</td><td>' +
-			'<select name="accountType" class="form-control">' + accountOpts + '</select>' +
-			'</td></tr><tr id="accountTypeErr"></tr></tbody></table>' +
-			'<input type="hidden" name="username" value="' + selected_members[0] + '">';
+		name + '</td></tr><tr id="usernameErr"></tr><tr><td>Account Type:</td><td>' +
+		'<select name="accountType" class="form-control">' + accountOpts + '</select>' +
+		'</td></tr><tr id="accountTypeErr"></tr></tbody></table>' +
+		'<input type="hidden" name="username" value="' + selected_members[0] + '">';
 		var modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
-			'<input type="submit" name="submit" value="Update Member" class="btn btn-primary">';
+		'<input type="submit" name="submit" value="Update Member" class="btn btn-primary">';
 		
 		$("#dashboardModal .modal-dialog .modal-content .modal-header .modal-title").html(modal_title);
 		$("#dashboardModal .modal-dialog .modal-content .modal-body").html(modal_body);
@@ -109,16 +109,68 @@ $(document).ready(function() {
 		
 		var modal_title = 'Remove Member(s)';
 		var modal_body = '<p>Remove the following members for your household?</p>' +
-			'<p>' + names + '</p><input type="hidden" name="usernames" ' +
-			'value="' + selected_members.toString() + '">';
+		'<p>' + names + '</p><input type="hidden" name="usernames" ' +
+		'value="' + selected_members.toString() + '">';
 		var modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
-			'<input type="submit" name="submit" value="Delete Member(s)" class="btn btn-danger">';
+		'<input type="submit" name="submit" value="Delete Member(s)" class="btn btn-danger">';
 		
 		$("#dashboardModal .modal-dialog .modal-content .modal-header .modal-title").html(modal_title);
 		$("#dashboardModal .modal-dialog .modal-content .modal-body").html(modal_body);
 		$("#dashboardModal .modal-dialog .modal-content .modal-footer").html(modal_footer);
 	});
-	
+	$("#addroom").click(function() {		
+		
+		var modal_title = 'Add A new room';
+		var modal_body = '<table class="modal-table"><tbody><tr><td>Room Name:</td><td>' +
+		'<input type="text" name="roomname" class="form-control"></td></tr>' +
+		'<tr id="unameErr"></tr></tbody></table>' ;
+		var modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
+		'<input type="hidden" name="householdId" value="' + household_id + '">'+
+		'<input type="submit" name="submit" value="Add Room" class="btn btn-primary">';
+			
+		$("#dashboardModal .modal-dialog .modal-content .modal-header .modal-title").html(modal_title);
+		$("#dashboardModal .modal-dialog .modal-content .modal-body").html(modal_body);
+		$("#dashboardModal .modal-dialog .modal-content .modal-footer").html(modal_footer);
+	});
+	$("#addplace").click(function() {
+
+		var accountOpts = '<option value="">(Select One)</option>';
+		for (i=0; i<js_array.length; i++) {
+			accountOpts = accountOpts + '<option value="'+js_array[i].roomName+'">' + js_array[i].roomName + '</options>';
+		}
+
+		var modal_title = 'Add A Place';
+		var modal_body = '<table class="modal-table"><tbody><tr><td>Place Name:</td><td>' +
+		'<input type="text" name="placename" class="form-control"></td></tr>' +
+		'<tr id="usernameErr"></tr><tr><td>Room Name:</td><td>' +
+		'<select name="accountType" class="form-control">' + accountOpts + '</select>' +
+		'</td></tr><tr id="accountTypeErr"></tr></tbody></table>' +
+		'<input type="hidden" name="householdId" value="' + household_id + '">';
+		var modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
+		'<input type="submit" name="submit" value="Add Place" class="btn btn-primary">';
+		
+		$("#dashboardModal .modal-dialog .modal-content .modal-header .modal-title").html(modal_title);
+		$("#dashboardModal .modal-dialog .modal-content .modal-body").html(modal_body);
+		$("#dashboardModal .modal-dialog .modal-content .modal-footer").html(modal_footer);
+	});
+		$("#additem").click(function() {
+
+		
+
+		var modal_title = 'Add A item';
+		var modal_body = '<table class="modal-table"><tbody><tr><td>Item Name:</td><td>' +
+		'<input type="text" name="itemname" class="form-control"></td></tr>' +
+		'<tr id="usernameErr"></tr><tr><td>Room Name:</td><td>' +
+		'<input type="text" name="roomName" class="form-control"></td></tr><tr><td>Place Name:</td><td>' +
+		'<input type="text" name="placename" class="form-control"></td></tr></tbody></table>'+
+		'<input type="hidden" name="householdId" value="' + household_id + '">';
+		var modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
+		'<input type="submit" name="submit" value="Add Item" class="btn btn-primary">';
+		
+		$("#dashboardModal .modal-dialog .modal-content .modal-header .modal-title").html(modal_title);
+		$("#dashboardModal .modal-dialog .modal-content .modal-body").html(modal_body);
+		$("#dashboardModal .modal-dialog .modal-content .modal-footer").html(modal_footer);
+	});
 	$("#dashboardModal").submit(function(event) {
 		if (document.forms["modalForm"]["submit"].value == "Create Household") {
 			var input = document.forms["modalForm"]["householdName"];
@@ -178,7 +230,84 @@ $(document).ready(function() {
 				$("#accountTypeErr").html('<td colspan="2" class="text-danger">Account Type is required.</td>');
 				event.preventDefault();
 			}
-		} else if (document.forms["modalForm"]["submit"].value == "Update Member") {
+		}///
+		else if (document.forms["modalForm"]["submit"].value == "Add Place") {
+			var input = document.forms["modalForm"]["placename"];
+			
+			if (input.classList.contains("border-danger")) {
+				input.classList.remove("border-danger");
+			}
+			
+			$("#placenameerr").html("");
+			
+			if (input.value) {
+				var regex = /^[a-zA-Z0-9-_]+$/;
+				
+				if (!regex.test(input.value)) {
+					input.classList.add("border-danger");
+					$("#placenameerr").html('<td colspan="2" class="text-danger">The username may only contain alpha-numeric characters, underscores, and dashes.</td>');
+					event.preventDefault();
+				}
+			} else {
+				input.classList.add("border-danger");
+				$("#placenameerr").html('<td colspan="2" class="text-danger">Username is required.</td>');
+				event.preventDefault();
+			}
+			
+			input = document.forms["modalForm"]["accountType"];
+			
+			if (input.classList.contains("border-danger")) {
+				input.classList.remove("border-danger");
+			}
+			
+			$("#accountTypeErr").html("");
+			
+			if (!input.value) {
+				input.classList.add("border-danger");
+				$("#accountTypeErr").html('<td colspan="2" class="text-danger">Account Type is required.</td>');
+				event.preventDefault();
+			}
+		} 
+		///
+				else if (document.forms["modalForm"]["submit"].value == "Add Item") {
+			var input = document.forms["modalForm"]["itemname"];
+			
+			if (input.classList.contains("border-danger")) {
+				input.classList.remove("border-danger");
+			}
+			
+			$("#placenameerr").html("");
+			
+			if (input.value) {
+				var regex = /^[a-zA-Z0-9-_]+$/;
+				
+				if (!regex.test(input.value)) {
+					input.classList.add("border-danger");
+					$("#placenameerr").html('<td colspan="2" class="text-danger">The username may only contain alpha-numeric characters, underscores, and dashes.</td>');
+					event.preventDefault();
+				}
+			} else {
+				input.classList.add("border-danger");
+				$("#placenameerr").html('<td colspan="2" class="text-danger">Username is required.</td>');
+				event.preventDefault();
+			}
+			
+			input = document.forms["modalForm"]["accountType"];
+			
+			if (input.classList.contains("border-danger")) {
+				input.classList.remove("border-danger");
+			}
+			
+			$("#accountTypeErr").html("");
+			
+			if (!input.value) {
+				input.classList.add("border-danger");
+				$("#accountTypeErr").html('<td colspan="2" class="text-danger">Account Type is required.</td>');
+				event.preventDefault();
+			}
+		} 
+		///
+		 else if (document.forms["modalForm"]["submit"].value == "Update Member") {
 			var input = document.forms["modalForm"]["accountType"];
 			
 			if (input.classList.contains("border-danger")) {
@@ -194,8 +323,17 @@ $(document).ready(function() {
 			}
 		} else if (document.forms["modalForm"]["submit"].value == "Delete Member(s)") {
 			
-		} else {
-			event.preventDefault();
+		} else if (document.forms["modalForm"]["submit"].value == "Add Room")
+		{var input = document.forms["modalForm"]["roomname"];
+
+		if (input.classList.contains("border-danger")) {
+			input.classList.remove("border-danger");
 		}
-	});
+		$("#unameErr").html("");
+
+	}
+	else {
+		event.preventDefault();
+	}
+});
 });

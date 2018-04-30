@@ -38,6 +38,8 @@
 				<li>Tabs for each item</li>
 				<li>Categorized into sections</li>
 				<li>Can have description and content for each room</li>
+				<li>Can have admins, family members and also guest users</li>
+				<li>Never, ever misplace an Item again</li>
 			</ul>
 		</div>
 		<div class="col-md-6">
