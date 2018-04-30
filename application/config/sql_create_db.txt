@@ -68,3 +68,11 @@ INSERT INTO `wheres_the_item`.`accesstypes` (`accessName`) VALUES ('Household ad
 
 INSERT INTO `wheres_the_item`.`households` (`householdName`) VALUES ('N/A');
 UPDATE `households` SET `householdId` = 0 WHERE `households`.`householdId` = 1;
+
+INSERT INTO `wheres_the_item`.`users` (`username`,`name`) VALUES ('0', 'N/A');
+
+INSERT INTO `wheres_the_item`.`rooms` (`roomName`) VALUES ('N/A');
+UPDATE `rooms` SET `roomId` = 0 WHERE `rooms`.`roomId` = 1;
+
+INSERT INTO `wheres_the_item`.`storageplaces` (`storagePlaceName`) VALUES ('N/A');
+UPDATE `storageplaces` SET `storagePlaceId` = 0 WHERE `storageplaces`.`storagePlaceId` = 1;

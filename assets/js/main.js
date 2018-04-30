@@ -1,5 +1,8 @@
 $(document).ready(function() {
 	var selected_members = [];
+	var selected_rooms = [];
+	var selected_storage_places = [];
+	var selected_items = [];
 	$('[data-toggle="tooltip"]').tooltip();
 
 	$("#createHousehold").click(function() {
@@ -44,6 +47,54 @@ $(document).ready(function() {
 			document.getElementById("removeMembers").disabled = false;
 		} else {
 			document.getElementById("removeMembers").disabled = true;
+		}
+	});
+	
+	$("input[name='roomCb']").click(function() {
+		var value = $(this).attr("value");
+		
+		if ($(this).is(":checked")) {
+			selected_rooms.push(value);
+		} else {
+			selected_rooms.splice($.inArray(value, selected_rooms), 1);
+		}
+		
+		if (selected_rooms.length > 0) {
+			document.getElementById("removeroom").disabled = false;
+		} else {
+			document.getElementById("removeroom").disabled = true;
+		}
+	});
+	
+	$("input[name='storagePlaceCb']").click(function() {
+		var value = $(this).attr("value");
+		
+		if ($(this).is(":checked")) {
+			selected_storage_places.push(value);
+		} else {
+			selected_storage_places.splice($.inArray(value, selected_storage_places), 1);
+		}
+		
+		if (selected_storage_places.length > 0) {
+			document.getElementById("removeplace").disabled = false;
+		} else {
+			document.getElementById("removeplace").disabled = true;
+		}
+	});
+	
+	$("input[name='itemCb']").click(function() {
+		var value = $(this).attr("value");
+		
+		if ($(this).is(":checked")) {
+			selected_items.push(value);
+		} else {
+			selected_items.splice($.inArray(value, selected_items), 1);
+		}
+		
+		if (selected_items.length > 0) {
+			document.getElementById("removeitem").disabled = false;
+		} else {
+			document.getElementById("removeitem").disabled = true;
 		}
 	});
 	
@@ -171,6 +222,76 @@ $(document).ready(function() {
 		$("#dashboardModal .modal-dialog .modal-content .modal-body").html(modal_body);
 		$("#dashboardModal .modal-dialog .modal-content .modal-footer").html(modal_footer);
 	});
+		
+		$("#removeroom").click(function() {
+			var rooms = "";
+			
+			for (i=0; i<selected_rooms.length; i++) {
+				if (i > 0) {
+					rooms = rooms + ", " + $('.Room' + selected_rooms[i] + ' td:nth-child(1)').text();
+				} else {
+					rooms = rooms + $('.Room' + selected_rooms[i] + ' td:nth-child(1)').text();
+				}
+			}
+			
+			var modal_title = 'Delete Rooms(s)';
+			var modal_body = '<p>Delete the following rooms in your household?</p>' +
+				'<p>' + rooms + '</p><input type="hidden" name="rooms" ' +
+				'value="' + selected_rooms.toString() + '">';
+			var modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
+				'<input type="submit" name="submit" value="Delete Rooms(s)" class="btn btn-danger">';
+			
+			$("#dashboardModal .modal-dialog .modal-content .modal-header .modal-title").html(modal_title);
+			$("#dashboardModal .modal-dialog .modal-content .modal-body").html(modal_body);
+			$("#dashboardModal .modal-dialog .modal-content .modal-footer").html(modal_footer);
+		});
+		
+		$("#removeplace").click(function() {
+			var storagePlaces = "";
+			
+			for (i=0; i<selected_storage_places.length; i++) {
+				if (i > 0) {
+					storagePlaces = storagePlaces + ", " + $('.Place' + selected_storage_places[i] + ' td:nth-child(1)').text();
+				} else {
+					storagePlaces = storagePlaces + $('.Place' + selected_storage_places[i] + ' td:nth-child(1)').text();
+				}
+			}
+			
+			var modal_title = 'Delete Storage Place(s)';
+			var modal_body = '<p>Delete the following storage places in your household?</p>' +
+				'<p>' + storagePlaces + '</p><input type="hidden" name="storagePlaces" ' +
+				'value="' + selected_storage_places.toString() + '">';
+			var modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
+				'<input type="submit" name="submit" value="Delete Storage Place(s)" class="btn btn-danger">';
+			
+			$("#dashboardModal .modal-dialog .modal-content .modal-header .modal-title").html(modal_title);
+			$("#dashboardModal .modal-dialog .modal-content .modal-body").html(modal_body);
+			$("#dashboardModal .modal-dialog .modal-content .modal-footer").html(modal_footer);
+		});
+		
+		$("#removeitem").click(function() {
+			var items = "";
+			
+			for (i=0; i<selected_items.length; i++) {
+				if (i > 0) {
+					items = items + ", " + $('.Item' + selected_items[i] + ' td:nth-child(1)').text();
+				} else {
+					items = items + $('.Item' + selected_items[i] + ' td:nth-child(1)').text();
+				}
+			}
+			
+			var modal_title = 'Delete Item(s)';
+			var modal_body = '<p>Delete the following items in your household?</p>' +
+				'<p>' + items + '</p><input type="hidden" name="items" ' +
+				'value="' + selected_items.toString() + '">';
+			var modal_footer = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
+				'<input type="submit" name="submit" value="Delete Item(s)" class="btn btn-danger">';
+			
+			$("#dashboardModal .modal-dialog .modal-content .modal-header .modal-title").html(modal_title);
+			$("#dashboardModal .modal-dialog .modal-content .modal-body").html(modal_body);
+			$("#dashboardModal .modal-dialog .modal-content .modal-footer").html(modal_footer);
+		});
+		
 	$("#dashboardModal").submit(function(event) {
 		if (document.forms["modalForm"]["submit"].value == "Create Household") {
 			var input = document.forms["modalForm"]["householdName"];
@@ -321,7 +442,10 @@ $(document).ready(function() {
 				$("#accountTypeErr").html('<td colspan="2" class="text-danger">Account Type is required.</td>');
 				event.preventDefault();
 			}
-		} else if (document.forms["modalForm"]["submit"].value == "Delete Member(s)") {
+		} else if (document.forms["modalForm"]["submit"].value == "Delete Member(s)"
+			|| document.forms["modalForm"]["submit"].value == "Delete Rooms(s)"
+			|| document.forms["modalForm"]["submit"].value == "Delete Storage Place(s)"
+			|| document.forms["modalForm"]["submit"].value == "Delete Item(s)") {
 			
 		} else if (document.forms["modalForm"]["submit"].value == "Add Room")
 		{var input = document.forms["modalForm"]["roomname"];

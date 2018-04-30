@@ -98,22 +98,54 @@ Class Main_model extends CI_Model {
 
     public function fetch_rooms_storage($householdid){
 
-        $sql = "SELECT rooms.roomName, storageplaces.storageplaceName FROM rooms,storageplaces,households where households.householdId = rooms.householdId and rooms.roomId = storageplaces.roomId and households.householdId = '".$householdid."'";
+        $sql = "SELECT storageplaces.storagePlaceId, rooms.roomName, storageplaces.storageplaceName FROM rooms,storageplaces,households where households.householdId = rooms.householdId and rooms.roomId = storageplaces.roomId and households.householdId = '".$householdid."'";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
 
     public function fetch_rooms($householdid){
-        $sql = "SELECT rooms.roomName FROM rooms,households where households.householdId = rooms.householdId and households.householdId = '".$householdid."'";
+        $sql = "SELECT rooms.roomId, rooms.roomName FROM rooms,households where households.householdId = rooms.householdId and households.householdId = '".$householdid."'";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
 
     public function fetch_items($householdid)
     {
-        $sql = "SELECT items.itemName,items.lastUpdated,users.name,rooms.roomName,storageplaces.storagePlaceName FROM `items`,`storageplaces`,`rooms`,`households`,`users` where households.householdId = rooms.householdId and rooms.roomId = storageplaces.roomId and items.lastUpdatedBy = users.username and storageplaces.storagePlaceId = items.storagePlaceId and households.householdId = '".$householdid."'";
+        $sql = "SELECT items.itemId, items.itemName,items.lastUpdated,users.name,rooms.roomName,storageplaces.storagePlaceName FROM `items`,`storageplaces`,`rooms`,`households`,`users` where households.householdId = rooms.householdId and rooms.roomId = storageplaces.roomId and items.lastUpdatedBy = users.username and storageplaces.storagePlaceId = items.storagePlaceId and households.householdId = '".$householdid."'";
         $query = $this->db->query($sql);
         return $query->result_array();
+    }
+    
+    public function delete_rooms($rooms) {
+        $roomsStr = implode(",", $rooms);
+        
+        $sql = "UPDATE storageplaces SET roomId = 0 WHERE roomId IN(" . $roomsStr . ")";
+        $sql2 = "DELETE FROM rooms WHERE roomId IN(" . $roomsStr . ")";
+        
+        if (!$this->db->query($sql) || !$this->db->query($sql2)) {
+            return $this->db->error();
+        }
+    }
+    
+    public function delete_storage_places($storagePlaces) {
+        $storagePlacesStr = implode(",", $storagePlaces);
+        
+        $sql = "UPDATE items SET storagePlaceId = 0 WHERE storagePlaceId IN(" . $storagePlacesStr . ")";
+        $sql2 = "DELETE FROM storageplaces WHERE storagePlaceId IN(" . $storagePlacesStr . ")";
+        
+        if (!$this->db->query($sql) || !$this->db->query($sql2)) {
+            return $this->db->error();
+        }
+    }
+    
+    public function delete_items($items) {
+        $itemsStr = implode(",", $items);
+        
+        $sql = "DELETE FROM items WHERE itemId IN(" . $itemsStr . ")";
+        
+        if (!$this->db->query($sql)) {
+            return $this->db->error();
+        }
     }
 
 

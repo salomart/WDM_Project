@@ -64,8 +64,7 @@
 							<div class="card-body">
 								<div class="h-item-options">
 									<button type="button"  id="additem" class="btn btn-primary" data-toggle="modal" data-target="#dashboardModal" >Add Item</button>
-									<button type="button"  id="updateitem" class="btn btn-primary" data-toggle="modal" data-target="#dashboardModal">Update Item</button>
-									<button type="button"  id="removeitem" class="btn btn-primary" data-toggle="modal" data-target="#dashboardModal">Delete Item(s)</button>
+									<button type="button"  id="removeitem" class="btn btn-danger" data-toggle="modal" data-target="#dashboardModal" disabled>Delete Item(s)</button>
 								</div>
 								<table class="table table-striped">
 										<tr>
@@ -74,16 +73,25 @@
 											<th>Last Updated By</th>
 											<th>Room Name</th>
 											<th>Storage Place name</th>
+											<?php if ($user_data[0]["accountType"] == 2): ?>
+													<th></th>
+												<?php endif; ?>
 										</tr>
 										<?php
 
 										foreach ($items as $key => $value) {
-											echo "<tr>";
+											echo "<tr class='Item" . $value['itemId'] . "'>";
 											echo "<td>".$value['itemName']."</td>";
 											echo "<td>".$value['lastUpdated']."</td>";
 											echo "<td>".$value['name']."</td>";
 											echo "<td>".$value['roomName']."</td>";
-											echo "<td>".$value['storagePlaceName']."</td>";									
+											echo "<td>".$value['storagePlaceName']."</td>";	
+											if ($user_data[0]["accountType"] == 2): ?>
+														<td>
+															<?php echo form_checkbox('itemCb', $value['itemId'], FALSE, 'id="Item' . $value['itemId'] . '"'); ?>
+															<label for="Item<?php echo $value['itemId']; ?>"></label>
+														</td>
+										<?php endif;
 											echo "</tr>";
 										}
 
@@ -113,16 +121,24 @@
 										<tr>
 											<th>Name</th>
 											<th>Room Location</th>
+											<?php if ($user_data[0]["accountType"] == 2): ?>
+													<th></th>
+												<?php endif; ?>
 										</tr>
 										<?php
 
 										foreach ($roomdata as $key => $value) {
-											echo "<tr>";
+										    echo "<tr class='Place" . $value['storagePlaceId'] . "'>";
 											echo "<td>".$value['storageplaceName']."</td>";
 
-											echo "<td>".$value['roomName']."</td><td>";
-											
-											echo "</td></tr>";
+											echo "<td>".$value['roomName']."</td>";
+											if ($user_data[0]["accountType"] == 2): ?>
+														<td>
+															<?php echo form_checkbox('storagePlaceCb', $value['storagePlaceId'], FALSE, 'id="Place' . $value['storagePlaceId'] . '"'); ?>
+															<label for="Place<?php echo $value['storagePlaceId']; ?>"></label>
+														</td>
+										<?php endif;
+											echo "</tr>";
 										}
 
 										?>
@@ -148,23 +164,36 @@
 									<button type="button" id="addroom" class="btn btn-primary" data-toggle="modal" data-target="#dashboardModal">Add Room</button>
 									<button type="button" id="removeroom" class="btn btn-danger" data-toggle="modal" data-target="#dashboardModal" disabled>Remove Room(s)</button>
 								</div>
+								<?php endif;?>
 								<table class="table table-striped">
 									<tbody>
 										<tr>
-											<th>Name</th>
+											<th>Room Name</th>
+											<?php if ($user_data[0]["accountType"] == 2): ?>
+													<th></th>
+												<?php endif; ?>
 										</tr>
 										<?php 
 										 foreach ($rooms as $key => $value) {
-										 	echo "<tr>";
+										     echo "<tr class='Room" . $value['roomId'] . "'>";
 										 	echo "<td>".$value['roomName']."</td>";
-										 	echo "</tr>";
+										 	
+										 	if ($user_data[0]["accountType"] == 2): ?>
+														<td>
+															<?php echo form_checkbox('roomCb', $value['roomId'], FALSE, 'id="Room' . $value['roomId'] . '"'); ?>
+															<label for="Room<?php echo $value['roomId']; ?>"></label>
+														</td>
+										<?php endif;
+										echo "</tr>";
+										 	
 										 }
 										 ?>
-										 <?php endif;?>
-										 <?php endif;?>
+										
+										 
 										
 									</tbody>
 								</table>
+								<?php endif;?>
 							</div>
 						</div>
 					</div>

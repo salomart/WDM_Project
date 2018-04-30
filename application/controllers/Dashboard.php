@@ -128,6 +128,51 @@ class Dashboard extends CI_Controller {
                     } else {
                         $data['action_fail'] = "An error occured when removing the user(s) from your household.";
                     }
+                } else if (strcmp($this->input->post('submit'), "Delete Rooms(s)") == 0) {
+                    $rooms = $this->input->post('rooms');
+                    
+                    if ($rooms && $rooms != "") {
+                        $roomsArr = explode(",", $rooms);
+                        $update_result = $this->main_model->delete_rooms($roomsArr);
+                        
+                        if ($update_result == null) {
+                            $data['action_success'] = "Successfully deleted the room(s) from your household.";
+                        } else {
+                            $data['action_fail'] = "An error occured when deleting the room(s) from your household.";
+                        }
+                    } else {
+                        $data['action_fail'] = "An error occured when deleting the room(s) from your household.";
+                    }
+                } else if (strcmp($this->input->post('submit'), "Delete Storage Place(s)") == 0) {
+                    $storagePlaces = $this->input->post('storagePlaces');
+                    
+                    if ($storagePlaces && $storagePlaces != "") {
+                        $storagePlacesArr = explode(",", $storagePlaces);
+                        $update_result = $this->main_model->delete_storage_places($storagePlacesArr);
+                        
+                        if ($update_result == null) {
+                            $data['action_success'] = "Successfully deleted the storage place(s) from your household.";
+                        } else {
+                            $data['action_fail'] = "An error occured when deleting the storage place(s) from your household.";
+                        }
+                    } else {
+                        $data['action_fail'] = "An error occured when deleting the storage place(s) from your household.";
+                    }
+                } else if (strcmp($this->input->post('submit'), "Delete Item(s)") == 0) {
+                    $items = $this->input->post('items');
+                    
+                    if ($items && $items != "") {
+                        $itemsArr = explode(",", $items);
+                        $update_result = $this->main_model->delete_items($itemsArr);
+                        
+                        if ($update_result == null) {
+                            $data['action_success'] = "Successfully deleted the item(s) from your household.";
+                        } else {
+                            $data['action_fail'] = "An error occured when deleting the item(s) from your household.";
+                        }
+                    } else {
+                        $data['action_fail'] = "An error occured when deleting the item(s) from your household.";
+                    }
                 }
             }
             
