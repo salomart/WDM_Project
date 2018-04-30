@@ -48,11 +48,64 @@ class Dashboard extends CI_Controller {
                     } else {
                         $data['action_fail'] = "The username entered doesn't exist.";
                     }
-                } else if (strcmp($this->input->post('submit'), "Update Member") == 0) {
+                }
+                else if (strcmp($this->input->post('submit'), "Add Room") == 0) {            
+                    
+                            
+
+                        
+                            $householdId=$this->input->post('householdId');
+                            
+                            
+                            $update_result = $this->main_model->add_room($this->input->post('roomname'), $householdId);
+                            
+                            if ($update_result == null) {
+                                $data['action_success'] = "Successfully added the room to your household.";
+                            } else {
+                                $data['action_fail'] = "An error occured when adding the room to your household.";
+                            }
+                        }  
+                 else if (strcmp($this->input->post('submit'), "Add Place") == 0) {
+                    
+
+                        
+                            $householdId = $this->input->post('householdId');
+                            
+                            $placename = $this->input->post('placename');
+                            $roomName =  $this->input->post('accountType');
+                            
+                            
+                            $update_result = $this->main_model->add_place($householdId,$placename,$roomName);
+                            
+                            if ($update_result == null) {
+                                $data['action_success'] = "Successfully added the place to your household.";
+                            } else {
+                                $data['action_fail'] = "An error occured when adding the room to your household.";
+                            }
+                        }  
+                          else if (strcmp($this->input->post('submit'), "Add Item") == 0) {
+                    
+                            $householdId = $this->input->post('householdId');
+                            $itemname = $this->input->post('itemname');
+                        
+                            $username = $_SESSION['username'];
+
+                            $placename = $this->input->post('placename');
+                            $roomName =  $this->input->post('roomName');
+                            
+                            
+                            $update_result = $this->main_model->add_item($householdId,$itemname,$username,$placename,$roomName);
+                            
+                            if ($update_result == null) {
+                                $data['action_success'] = "Successfully added the place to your household.";
+                            } else {
+                                $data['action_fail'] = "An error occured when adding the room to your household.";
+                            }
+                        }              
+                 else if (strcmp($this->input->post('submit'), "Update Member") == 0) {
                     $update_data = array(
                         'accountType' => $this->input->post('accountType')
                     );
-                    
                     $update_result = $this->main_model->update_user($this->input->post('username'), $update_data);
                     
                     if ($update_result == null) {
@@ -75,16 +128,66 @@ class Dashboard extends CI_Controller {
                     } else {
                         $data['action_fail'] = "An error occured when removing the user(s) from your household.";
                     }
+                } else if (strcmp($this->input->post('submit'), "Delete Rooms(s)") == 0) {
+                    $rooms = $this->input->post('rooms');
+                    
+                    if ($rooms && $rooms != "") {
+                        $roomsArr = explode(",", $rooms);
+                        $update_result = $this->main_model->delete_rooms($roomsArr);
+                        
+                        if ($update_result == null) {
+                            $data['action_success'] = "Successfully deleted the room(s) from your household.";
+                        } else {
+                            $data['action_fail'] = "An error occured when deleting the room(s) from your household.";
+                        }
+                    } else {
+                        $data['action_fail'] = "An error occured when deleting the room(s) from your household.";
+                    }
+                } else if (strcmp($this->input->post('submit'), "Delete Storage Place(s)") == 0) {
+                    $storagePlaces = $this->input->post('storagePlaces');
+                    
+                    if ($storagePlaces && $storagePlaces != "") {
+                        $storagePlacesArr = explode(",", $storagePlaces);
+                        $update_result = $this->main_model->delete_storage_places($storagePlacesArr);
+                        
+                        if ($update_result == null) {
+                            $data['action_success'] = "Successfully deleted the storage place(s) from your household.";
+                        } else {
+                            $data['action_fail'] = "An error occured when deleting the storage place(s) from your household.";
+                        }
+                    } else {
+                        $data['action_fail'] = "An error occured when deleting the storage place(s) from your household.";
+                    }
+                } else if (strcmp($this->input->post('submit'), "Delete Item(s)") == 0) {
+                    $items = $this->input->post('items');
+                    
+                    if ($items && $items != "") {
+                        $itemsArr = explode(",", $items);
+                        $update_result = $this->main_model->delete_items($itemsArr);
+                        
+                        if ($update_result == null) {
+                            $data['action_success'] = "Successfully deleted the item(s) from your household.";
+                        } else {
+                            $data['action_fail'] = "An error occured when deleting the item(s) from your household.";
+                        }
+                    } else {
+                        $data['action_fail'] = "An error occured when deleting the item(s) from your household.";
+                    }
                 }
             }
             
             $session_data = array( 'username' => $_SESSION['username'] );
             $data['user_data'] = $this->main_model->fetch_user($session_data);
             
+
             if ($data['user_data'][0] && $data['user_data'][0]['householdId'] != 0) {
                 $data['member_data'] = $this->main_model->fetch_member_data($data['user_data'][0]['householdId']);
+
             }
-            
+            $data['roomdata'] = $this->main_model->fetch_rooms_storage($data['user_data'][0]['householdId']);
+            $data['rooms'] = $this->main_model->fetch_rooms($data['user_data'][0]['householdId']);
+            $data['items'] = $this->main_model->fetch_items($data['user_data'][0]['householdId']);
+
             $this->load->view('templates/header', $data);
             $this->load->view('pages/dashboard', $data);
             $this->load->view('templates/footer', $data);
